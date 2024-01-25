@@ -67,7 +67,8 @@ class TypeResolution
             $graphTypes[] = Introspection::_schema();
         }
         foreach ($graphTypes as $type) {
-            $typeMap = Utils\TypeInfo::extractTypes($type, $typeMap);
+            if (!$type) continue;
+            Utils\TypeInfo::extractTypes($type, $typeMap);
         }
         $this->typeMap = $typeMap + Type::getStandardTypes();
 
